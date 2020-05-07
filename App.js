@@ -1,29 +1,25 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
 
 import productsReducer from "./store/reducers/products";
+import ShopNavigator from "./navigation/ShopNavigator";
 
 const rootReducer = combineReducers({
   products: productsReducer,
 });
 
+const store = createStore(rootReducer);
+
 export default function App() {
   return (
+    <NavigationContainer>
     <Provider store={store}>
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
+      <ShopNavigator />
     </Provider>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
