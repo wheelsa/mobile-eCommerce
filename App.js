@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
 import { createStore, combineReducers } from "redux";
@@ -10,10 +12,12 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import productsReducer from "./store/reducers/products";
 import ShopNavigator from "./navigation/ShopNavigator";
 import cartReducer from "./store/reducers/cart"
+import ordersReducer from "./store/reducers/order";
 
 const rootReducer = combineReducers({
   products: productsReducer,
   cart: cartReducer,
+  orders: ordersReducer
 });
 
 const store = createStore(rootReducer, composeWithDevTools());
